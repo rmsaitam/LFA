@@ -19,7 +19,16 @@ public class CYKTeste {
 
     public static void main(String argv[]) {
 
-        String palavra = "abaab";
+        String inicio = "S";
+        //String palavra = "abaab";
+      //  String palavra = "aaa";
+      //  String palavra = "abaa";
+       // String palavra = "a";
+       // String palavra = "aa";
+      // String palavra = "baba";
+        //String palavra = "aaa4aa";
+       // String palavra = "bbbbbbbaa";
+        String palavra = "ba";
         Map<String, List<String>> gramatica = new HashMap<String, List<String>>();
 
         List<String> deriva = new ArrayList<String>();
@@ -34,13 +43,12 @@ public class CYKTeste {
         deriva.add("a");
         gramatica.put("A", deriva);
 
-        CYK cyk = new CYK(palavra,gramatica);
-
-        cyk.printEmptyMatriz();        
-        System.out.println("");
-        cyk.printMatriz();
-        System.out.println("");
+        CYK cyk = new CYK(palavra,gramatica, inicio);
+        
         cyk.parseCYK();
+        cyk.printMatriz();
+        
+        System.out.println("Aceitou? " + cyk.isAceito());
     }
 
 }
