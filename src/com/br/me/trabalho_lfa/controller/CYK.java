@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.br.me.trabalho_lfa;
+package com.br.me.trabalho_lfa.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,10 +27,19 @@ public class CYK {
         this.gramatica = gramatica;
         this.inicio = inicio;
 
+        System.out.println("grama = > " + gramatica);
         matriz = new ArrayList<List<String>>();
     }
 
-    public boolean parseCYK() {
+    public String parseCYK(boolean isPassoAPasso) {
+
+        String retorno = "";
+        if (isPassoAPasso) {
+            retorno += "=> [INICIO] TESTANDO PALAVRA: " + palavra;
+            retorno += "\n";// linha vazia
+            retorno += printEmptyMatriz();
+            retorno += "\n";// linha vazia
+        }
 
         matriz = new ArrayList<List<String>>();
 
@@ -40,6 +49,13 @@ public class CYK {
             baseMatriz.add(base.toString());
         }
         matriz.add(baseMatriz);
+
+        if (isPassoAPasso) {
+            retorno += "\n";// linha vazia
+            retorno += printMatriz();
+            retorno += "\n";// linha vazia
+
+        }
 
         //primeira derivacao, o que leva a cada caracter da palavra
         List<String> linhaAnterior = baseMatriz; //a propria palavra
@@ -51,6 +67,12 @@ public class CYK {
         }
         //guarda a linha gerada
         matriz.add(linhaAtual);
+
+        if (isPassoAPasso) {
+            retorno += "\n";// linha vazia
+            retorno += printMatriz();
+            retorno += "\n";// linha vazia
+        }
 
         //derivacoes
         for (int s = 2; s <= palavra.length(); s++) {
@@ -101,9 +123,9 @@ public class CYK {
                                 if (!celulaGerada.contains(celChave)) {//se nao contem adiciona
                                     celulaGerada += celChave + ",";
                                 }
-                            } else {//se nao gerou nada, atualiza com vazio
-                                celulaGerada = "";
-                            }
+                            } //else {//se nao gerou nada, atualiza com vazio
+                            //  celulaGerada = "";
+                            //}
 
                         }
                     }
@@ -125,11 +147,23 @@ public class CYK {
             }
             //guarda a linha gerada
             matriz.add(linhaAtual);
+
+            if (isPassoAPasso) {
+                retorno += "\n";// linha vazia
+                retorno += printMatriz();
+                retorno += "\n";// linha vazia
+            }
         }
 
         testeAceita();
-        
-        return aceitou;
+
+        if (isPassoAPasso) {
+            retorno += "\n";// linha vazia
+            retorno += "=> [FIM] TESTANDO PALAVRA: " + palavra;
+            retorno += "\n";// linha vazia
+        }
+
+        return retorno;
     }
 
     /**
@@ -173,7 +207,8 @@ public class CYK {
 
     /**
      * Retorna estado de aceitacao da linguagem
-     * @return 
+     *
+     * @return
      */
     public boolean isAceito() {
         return aceitou;
@@ -181,38 +216,49 @@ public class CYK {
 
     /**
      * imprime a matriz no console
+     *
+     * @return
      */
-    public void printMatriz() {
+    public String printMatriz() {
+
+        String retorno = "";
 
         Collections.reverse(matriz); //usa para mostrar na ordem correta
         for (List<String> linha : matriz) {
             for (String coluna : linha) {
-                System.out.print("  |   " + coluna);
+                retorno += "  |   " + coluna;
             }
-            System.out.println("  |");
+            retorno += "  |\n";
         }
         Collections.reverse(matriz);
+
+        return retorno;
     }
 
     /**
-     * imprime uma matriz vazia contendo apenas a palavra
+     * imprime uma matriz vazia
+     *
+     * @return
      */
-    public void printEmptyMatriz() {
+    public String printEmptyMatriz() {
+
+        String retorno = "";
 
         //matriz vazia
         for (int linha = 0; linha <= palavra.length(); linha++) {
             for (int coluna = 0; coluna <= linha; coluna++) {
-                System.out.print("  |");
+                retorno += "  |";
             }
-            System.out.println("  |");
+            retorno += "  |\n";
         }
 
         //base da matriz
         for (int coluna = 0; coluna <= palavra.length(); coluna++) {
-            System.out.print("  |");
+            retorno += "  |";
         }
-        System.out.println("  |");
+        retorno += "  |\n";
 
+        return retorno;
     }
 
     public void printTree() {
