@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  *
- * @author Wesklei Migliorini <wesklei at wbezerra.com.br>
+ * @author Wesklei Migliorini <wesklei at gmail.com>
  */
 public class CYK {
 
@@ -27,10 +27,15 @@ public class CYK {
         this.gramatica = gramatica;
         this.inicio = inicio;
 
-        System.out.println("grama = > " + gramatica);
         matriz = new ArrayList<List<String>>();
     }
 
+    /**
+     *  Faz o parse usando o algoritmo CYK
+     * @param isPassoAPasso
+     * @return retorna uma string contendo todo o output do programa caso seja passado true
+     * para isPassoAPasso, se nao retorna uma string vazia
+     */
     public String parseCYK(boolean isPassoAPasso) {
 
         String retorno = "";
@@ -259,10 +264,6 @@ public class CYK {
         retorno += "  |\n";
 
         return retorno;
-    }
-
-    public void printTree() {
-
     }
 
 }

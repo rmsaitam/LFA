@@ -25,25 +25,7 @@ public class CYKTeste {
             System.out.println("ERROR TESTE IN GRAMA1");
         }else{
             System.out.println("SUCESS! All teste pass!");
-        }
-        
-//        List<String> deriva = new ArrayList<String>();
-//        deriva.add("AB");
-//        deriva.add("XB");
-//        gramatica.put("S", deriva);
-//
-//        deriva = new ArrayList<String>();
-//        deriva.add("AB");
-//        gramatica.put("X", deriva);
-//
-//        deriva = new ArrayList<String>();
-//        deriva.add("a");
-//        gramatica.put("A", deriva);
-//
-//        deriva = new ArrayList<String>();
-//        deriva.add("b");
-//        gramatica.put("B", deriva);
-        // cyk.printMatriz();
+        }        
     }
 
     public boolean testeGramatica1() {
@@ -98,7 +80,6 @@ public class CYKTeste {
             }
         }
 
-        //System.out.println("Teste Result " + cyk.isAceito());
         return true; //passou no teste
     }
 }

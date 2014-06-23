@@ -4,6 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="WBezerra">
             <file>file:/home/wes/NetBeansProjects/Trabalho_LFA/src/com/br/me/trabalho_lfa/teste/CYKTeste.java</file>
+            <file>file:/home/wes/NetBeansProjects/Trabalho_LFA/src/com/br/me/trabalho_lfa/view/FormCYK.java</file>
+            <file>file:/home/wes/NetBeansProjects/Trabalho_LFA/src/com/br/me/trabalho_lfa/controller/CYK.java</file>
         </group>
     </open-files>
 </project-private>

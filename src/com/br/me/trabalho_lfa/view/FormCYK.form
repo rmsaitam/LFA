@@ -177,7 +177,7 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="S -&gt; AA&#xa;S -&gt; AS&#xa;S -&gt; b&#xa;A -&gt; SA&#xa;A -&gt; AS&#xa;A -&gt; a"/>
+                <Property name="text" type="java.lang.String" value="S -&gt; AB&#xa;S -&gt; CD&#xa;S -&gt; FJ&#xa;S -&gt; HD&#xa;S -&gt; FA&#xa;S -&gt; GE&#xa;S -&gt; a&#xa;S -&gt; b&#xa;S -&gt; c&#xa;S -&gt; GI&#xa;B -&gt; GE&#xa;C -&gt; GE&#xa;C -&gt; b&#xa;B -&gt; b&#xa;D -&gt; c&#xa;C -&gt; a&#xa;B -&gt; c&#xa;A -&gt; a&#xa;E -&gt; b&#xa;E -&gt; GE&#xa;D -&gt; HD&#xa;C -&gt; FA&#xa;C -&gt; FJ&#xa;J -&gt; CG&#xa;B -&gt; HD&#xa;B -&gt; GI&#xa;I -&gt; BH&#xa;G -&gt; b&#xa;H -&gt; c&#xa;A -&gt; FA&#xa;F -&gt; a"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -219,7 +219,7 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="3"/>
-                <Property name="text" type="java.lang.String" value="abb"/>
+                <Property name="text" type="java.lang.String" value="abcc"/>
               </Properties>
             </Component>
           </SubComponents>

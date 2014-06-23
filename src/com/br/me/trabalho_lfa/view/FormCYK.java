@@ -77,7 +77,7 @@ public class FormCYK extends javax.swing.JFrame {
 
         jTextAreaGramatica.setColumns(20);
         jTextAreaGramatica.setRows(5);
-        jTextAreaGramatica.setText("S -> AA\nS -> AS\nS -> b\nA -> SA\nA -> AS\nA -> a");
+        jTextAreaGramatica.setText("S -> AB\nS -> CD\nS -> FJ\nS -> HD\nS -> FA\nS -> GE\nS -> a\nS -> b\nS -> c\nS -> GI\nB -> GE\nC -> GE\nC -> b\nB -> b\nD -> c\nC -> a\nB -> c\nA -> a\nE -> b\nE -> GE\nD -> HD\nC -> FA\nC -> FJ\nJ -> CG\nB -> HD\nB -> GI\nI -> BH\nG -> b\nH -> c\nA -> FA\nF -> a");
         jScrollPane2.setViewportView(jTextAreaGramatica);
 
         jLabel3.setText("Ativar passo-a-passo:");
@@ -100,7 +100,7 @@ public class FormCYK extends javax.swing.JFrame {
 
         jTextAreaPalavra.setColumns(20);
         jTextAreaPalavra.setRows(3);
-        jTextAreaPalavra.setText("abb");
+        jTextAreaPalavra.setText("abcc");
         jScrollPane3.setViewportView(jTextAreaPalavra);
 
         jLabel4.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
@@ -205,11 +205,17 @@ public class FormCYK extends javax.swing.JFrame {
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
 
+        /**
+         * Atravez do hashmap mantem a lista de derivacoes
+         */
         gramatica = new HashMap<String, List<String>>();
         String inicio = jTextFieldInicial.getText();
         String palavra = jTextAreaPalavra.getText();
         Boolean isPassoAPasso = jCheckBoxIsPassoAPasso.isSelected();
         
+        
+        //INICIO Trata a entrada dos textareas, estes passos servem apenas para 
+        //colocar na forma que o algoritmo CYK possa ser executado
         //separa por linhas
         String[] linesProducoes = jTextAreaGramatica.getText().replaceAll(" ", "").split("\\n");               
         
@@ -219,12 +225,16 @@ public class FormCYK extends javax.swing.JFrame {
             String[] lpSplit = lp.split("->");
             addGramatica(lpSplit[0], lpSplit[1]);
         }
+        //FIM Trata a entrada
         
+        //Executa o CYK para as entradas tratadas
         CYK cyk = new CYK(palavra, gramatica, inicio);
+        
+        //String de saida caso o isPassoAPasso seja true
+        //essa string ira conter as arvores do CYK em cada etapa do algoritmo
         String output = cyk.parseCYK(isPassoAPasso);
         
         output += "\n " + (cyk.isAceito() == true ? "Palavra Aceita! \n" : "Palavra REJEITADA!\n");
-        System.out.println("=>>> " + output);
         jTextAreaOutput.setText(output);
                 
     }//GEN-LAST:event_jButtonIniciarActionPerformed
